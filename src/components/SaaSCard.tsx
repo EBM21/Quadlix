@@ -1,3 +1,4 @@
+'use client';
 import * as React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
@@ -45,6 +46,9 @@ export function SaaSCard({ title, description, icon: Icon, image, feature, color
     <motion.div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${title}`}
       style={{
         rotateX,
         rotateY,

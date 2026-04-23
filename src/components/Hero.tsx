@@ -1,3 +1,4 @@
+'use client';
 import { motion, useScroll, useTransform } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
@@ -39,12 +40,21 @@ export function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-6 pt-6">
             <Magnetic>
-              <Button size="lg" className="px-10 h-16 bg-primary text-primary-foreground rounded-2xl font-black text-sm aura-glow hover:scale-[1.05] transition-all uppercase tracking-widest border-glow">
+              <Button 
+                size="lg" 
+                aria-label="Deploy your Quadlix environment"
+                className="px-10 h-16 bg-primary text-primary-foreground rounded-2xl font-black text-sm aura-glow hover:scale-[1.05] transition-all uppercase tracking-widest border-glow"
+              >
                 Deploy Environment
               </Button>
             </Magnetic>
             <Magnetic>
-              <Button size="lg" variant="outline" className="px-10 h-16 border-border/50 rounded-2xl font-black text-sm bg-card transition-all uppercase tracking-widest hover:bg-muted">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                aria-label="Audit our SaaS suite"
+                className="px-10 h-16 border-border/50 rounded-2xl font-black text-sm bg-card transition-all uppercase tracking-widest hover:bg-muted"
+              >
                 Audit Suite
               </Button>
             </Magnetic>

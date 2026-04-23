@@ -1,3 +1,4 @@
+'use client';
 import * as React from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Menu, X } from "lucide-react";
@@ -98,6 +99,7 @@ export function Navbar() {
             <Button 
               variant="ghost" 
               size="icon" 
+              aria-label="Open navigation menu"
               onClick={() => setIsOpen(true)} 
               className="rounded-full w-10 h-10"
             >

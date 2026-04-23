@@ -1,3 +1,4 @@
+'use client';
 import { Cpu, Github, Twitter, Linkedin, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

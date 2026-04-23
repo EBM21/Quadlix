@@ -1,29 +1,8 @@
+'use client';
 import * as React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-
-const metrics = [
-  { 
-    label: "Neural Load", 
-    value: "14.2ms", 
-    description: "Latency optimized for high-frequency data synthesis.",
-    color: "text-cyan-400",
-    animate: "pulse"
-  },
-  { 
-    label: "Sync Fidelity", 
-    value: "99.9%", 
-    description: "Real-time ledger consistency across 40+ global nodes.",
-    color: "text-purple-400"
-  },
-  { 
-    label: "Alpha Growth", 
-    value: "2.4k", 
-    description: "Daily automated operational baseline expansion.",
-    color: "text-emerald-400",
-    animate: "upward"
-  }
-];
+import { metrics } from "@/lib/mockData";
 
 export function StatsSection() {
   return (

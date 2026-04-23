@@ -1,3 +1,4 @@
+'use client';
 import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageCircle, X } from "lucide-react";

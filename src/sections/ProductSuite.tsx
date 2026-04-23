@@ -1,3 +1,4 @@
+'use client';
 import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -22,59 +23,7 @@ import { SaaSCard } from "../components/SaaSCard";
 import { Magnetic } from "../components/Magnetic";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const products = [
-  {
-    id: "erp",
-    title: "Quadlix ERP",
-    description: "Architecting the next century of enterprise intelligence with neural-linked ledger synchronization and real-time kinetic processing.",
-    icon: LayoutDashboard,
-    color: "from-blue-600 to-indigo-500",
-    feature: "Live Quadlix Sync",
-    image: "https://picsum.photos/seed/erp/1200/800",
-    isBento: true
-  },
-  {
-    id: "marketing",
-    title: "Digital Marketer",
-    description: "Deep-funnel AI analytics with predictive CTR and biometric synthesis.",
-    icon: BarChart3,
-    color: "from-purple-600 to-pink-500",
-    feature: "Alpha Analysis",
-    image: "https://picsum.photos/seed/marketing/800/600",
-    isBento: false
-  },
-  {
-    id: "builder",
-    title: "Web Engine X",
-    description: "Zero-latency deployment on a global edge network with instant AI optimization.",
-    icon: Globe,
-    color: "from-cyan-600 to-blue-500",
-    feature: "Edge Protocol",
-    image: "https://picsum.photos/seed/builder/800/600",
-    isBento: false
-  },
-  {
-    id: "ai-content",
-    title: "Content AI",
-    description: "Neural-based copywriting and multi-modal synthesis for high-frequency branding.",
-    icon: Bot,
-    color: "from-emerald-600 to-teal-500",
-    feature: "Cortex Gen",
-    image: "https://picsum.photos/seed/ai/1200/800",
-    isBento: true
-  },
-  {
-    id: "crm",
-    title: "Client Sphere",
-    description: "Relational CRM designed for high-velocity teams with integrated sentiment tracking.",
-    icon: Users,
-    color: "from-indigo-600 to-blue-500",
-    feature: "Pulse Monitor",
-    image: "https://picsum.photos/seed/crm/800/600",
-    isBento: false
-  }
-];
+import { products } from "@/lib/mockData";
 
 export function ProductSuite() {
   const [selectedId, setSelectedId] = React.useState<string | null>(null);

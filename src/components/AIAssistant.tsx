@@ -1,3 +1,4 @@
+'use client';
 import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, X, Send, Bot, User, Sparkles, Loader2 } from "lucide-react";
@@ -31,18 +32,26 @@ export function AIAssistant() {
     setIsLoading(true);
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: [...messages, userMessage].map(m => ({
-          role: m.role,
-          parts: [{ text: m.content }]
-        })),
-        config: {
-          systemInstruction: "You are Quadlix AI, the virtual assistant for 'Quadlix', a futuristic SaaS provider. Your tone is helpful, professional, and tech-forward. You know about Quadlix ERP, Digital Marketer, Web Engine X, and Client Sphere CRM. Encourage users to launch the suite or book a demo."
-        }
-      });
+      let aiContent = "";
+      
+      if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === "MY_GEMINI_API_KEY") {
+        // Mock response for static builds or missing keys
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        aiContent = `As a Quadlix AI representative, I can confirm that our services (ERP, CRM, and Site Gen) are optimized for your workflow. For deeper integration, please provide a valid Neural Key.`;
+      } else {
+        const response = await ai.models.generateContent({
+          model: "gemini-3-flash-preview",
+          contents: [...messages, userMessage].map(m => ({
+            role: m.role,
+            parts: [{ text: m.content }]
+          })),
+          config: {
+            systemInstruction: "You are Quadlix AI, the virtual assistant for 'Quadlix', a futuristic SaaS provider. Your tone is helpful, professional, and tech-forward. You know about Quadlix ERP, Digital Marketer, Web Engine X, and Client Sphere CRM. Encourage users to launch the suite or book a demo."
+          }
+        });
+        aiContent = response.text || "I'm sorry, I couldn't process that.";
+      }
 
-      const aiContent = response.text || "I'm sorry, I couldn't process that.";
       setMessages(prev => [...prev, { role: "model", content: aiContent }]);
     } catch (err) {
       console.error(err);

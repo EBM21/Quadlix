@@ -1,3 +1,4 @@
+'use client';
 import { motion } from "motion/react";
 import { 
   Cpu, 
@@ -57,11 +58,11 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-sm uppercase tracking-[0.4em] font-bold text-primary mb-4 text-glow">Superior Capabilities</h2>
-            <h3 className="text-4xl md:text-6xl font-bold font-heading tracking-tight max-w-4xl mx-auto leading-[1.1]">
+            <div className="text-sm uppercase tracking-[0.4em] font-bold text-primary mb-4 text-glow">Superior Capabilities</div>
+            <h2 className="text-4xl md:text-6xl font-bold font-heading tracking-tight max-w-4xl mx-auto leading-[1.1]">
                ENGINEERED FOR THE <br />
                <span className="text-muted-foreground italic">AUTONOMOUS ERA</span>
-            </h3>
+            </h2>
           </motion.div>
         </div>
 
