@@ -1,14 +1,11 @@
 'use client';
 import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageSquare, X, Send, Bot, User, Sparkles, Loader2 } from "lucide-react";
-import { GoogleGenAI } from "@google/genai";
+import { MessageSquare, X, Send, Bot, User, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 interface Message {
   role: "user" | "model";
@@ -16,6 +13,7 @@ interface Message {
 }
 
 export function AIAssistant() {
+  const [mounted, setMounted] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [input, setInput] = React.useState("");
   const [messages, setMessages] = React.useState<Message[]>([
@@ -23,43 +21,39 @@ export function AIAssistant() {
   ]);
   const [isLoading, setIsLoading] = React.useState(false);
 
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = { role: "user", content: input };
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input.toLowerCase();
     setInput("");
     setIsLoading(true);
 
-    try {
+    // Mock AI Simulation
+    setTimeout(() => {
       let aiContent = "";
       
-      if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === "MY_GEMINI_API_KEY") {
-        // Mock response for static builds or missing keys
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        aiContent = `As a Quadlix AI representative, I can confirm that our services (ERP, CRM, and Site Gen) are optimized for your workflow. For deeper integration, please provide a valid Neural Key.`;
+      if (currentInput.includes("pricing") || currentInput.includes("cost")) {
+        aiContent = "Our pricing is structured for maximum scalability. We have 'Starter' for solo innovators ($49/mo), 'Professional' for growing teams ($129/mo), and customized 'Enterprise' solutions. All plans include neural-core access.";
+      } else if (currentInput.includes("service") || currentInput.includes("feature")) {
+        aiContent = "The Quadlix suite includes Neural Automation, Quantum Security, and Modular Scaling. Our ERP and CRM modules are integrated via our proprietary neural-linked ledger system.";
+      } else if (currentInput.includes("hello") || currentInput.includes("hi")) {
+        aiContent = "Greetings. I am Quadlix-X Neural Core. How can I assist your operational deployment today?";
       } else {
-        const response = await ai.models.generateContent({
-          model: "gemini-3-flash-preview",
-          contents: [...messages, userMessage].map(m => ({
-            role: m.role,
-            parts: [{ text: m.content }]
-          })),
-          config: {
-            systemInstruction: "You are Quadlix AI, the virtual assistant for 'Quadlix', a futuristic SaaS provider. Your tone is helpful, professional, and tech-forward. You know about Quadlix ERP, Digital Marketer, Web Engine X, and Client Sphere CRM. Encourage users to launch the suite or book a demo."
-          }
-        });
-        aiContent = response.text || "I'm sorry, I couldn't process that.";
+        aiContent = "That's an interesting query. At Quadlix, we focus on eliminating operational entropy. For a detailed technical whitepaper or a personal walkthrough, I recommend establishing a direct connection via our Contact portal.";
       }
 
       setMessages(prev => [...prev, { role: "model", content: aiContent }]);
-    } catch (err) {
-      console.error(err);
-      setMessages(prev => [...prev, { role: "model", content: "Apologies, my neural circuits are offline. Please try again later." }]);
-    } finally {
       setIsLoading(false);
-    }
+    }, 1500);
   };
+
+  if (!mounted) return null;
 
   return (
     <>
