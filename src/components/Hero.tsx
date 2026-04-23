@@ -8,18 +8,19 @@ import * as React from "react";
 
 export function Hero() {
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  
+  // Throttle parallax or disable on mobile logic would go here, 
+  // but we'll stick to basic optimizations first.
+  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -80]);
 
   return (
-    <section id="home" className="relative min-h-[110vh] flex items-center justify-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-[100vh] flex items-center justify-center pt-20 overflow-hidden">
       <div className="container mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ y: y1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 space-y-10"
         >
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl border border-primary/30 bg-primary/5 mb-2 backdrop-blur-sm shadow-xl">

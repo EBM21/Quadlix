@@ -56,7 +56,7 @@ export function Services() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <div className="text-sm uppercase tracking-[0.4em] font-bold text-primary mb-4 text-glow">Superior Capabilities</div>
             <h2 className="text-4xl md:text-6xl font-bold font-heading tracking-tight max-w-4xl mx-auto leading-[1.1]">
@@ -73,7 +73,7 @@ export function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               className="group p-6 border border-border/50 bg-card/40 rounded-2xl hover:bg-card/60 transition-all cursor-default gradient-border"
             >
               <div className="text-primary mb-3 group-hover:scale-110 transition-transform duration-300">

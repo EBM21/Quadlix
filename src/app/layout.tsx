@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  manifest: "/manifest.json",
   openGraph: {
     title: "Quadlix | Elite AI SaaS Stack",
     description: "Architecting the next century of enterprise intelligence. Autonomous business stack for high-frequency digital enterprises.",

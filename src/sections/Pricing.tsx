@@ -51,9 +51,9 @@ export function Pricing() {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <h2 className="text-4xl md:text-6xl font-bold font-heading tracking-tight">
               TRANSPARENT <br />
@@ -83,10 +83,10 @@ export function Pricing() {
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="h-full"
             >
               <ShadCard 

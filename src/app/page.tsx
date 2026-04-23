@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from "react";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { StatsSection } from "@/sections/StatsSection";
@@ -9,8 +10,15 @@ import { ProductSuite } from "@/sections/ProductSuite";
 import { Pricing } from "@/sections/Pricing";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
-import { AIAssistant } from "@/components/AIAssistant";
-import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+
+// Dynamic imports for heavy non-critical components
+const AIAssistant = dynamic(() => import("@/components/AIAssistant").then(mod => mod.AIAssistant), { 
+  ssr: false 
+});
+const WhatsAppWidget = dynamic(() => import("@/components/WhatsAppWidget").then(mod => mod.WhatsAppWidget), { 
+  ssr: false 
+});
+
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
@@ -27,7 +35,7 @@ export default function Home() {
     <div 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen bg-background font-sans text-foreground transition-colors duration-500 noise-bg overflow-x-hidden"
+      className="relative min-h-screen bg-background font-sans text-foreground noise-bg overflow-x-hidden"
     >
       <WhatsAppWidget />
       
