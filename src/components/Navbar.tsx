@@ -1,6 +1,6 @@
 'use client';
 import * as React from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";

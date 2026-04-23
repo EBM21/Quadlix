@@ -1,5 +1,5 @@
 'use client';
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Send, MapPin, Phone, Mail, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

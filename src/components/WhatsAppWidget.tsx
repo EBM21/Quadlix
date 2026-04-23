@@ -1,6 +1,6 @@
 'use client';
 import * as React from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 
 export function WhatsAppWidget() {

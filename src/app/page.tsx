@@ -11,7 +11,7 @@ import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 import { AIAssistant } from "@/components/AIAssistant";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const containerRef = React.useRef<HTMLDivElement>(null);

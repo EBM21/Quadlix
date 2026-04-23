@@ -1,5 +1,5 @@
 'use client';
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { Magnetic } from "./Magnetic";

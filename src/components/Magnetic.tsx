@@ -1,6 +1,6 @@
 'use client';
 import * as React from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function Magnetic({ children }: { children: React.ReactNode }) {
   const x = useMotionValue(0);
