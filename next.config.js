@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Optimized for static export as per user request
-  trailingSlash: true,
+  // output: 'export', // Commented out for smoother local preview
   images: {
     unoptimized: true, // Required for static export
   },
