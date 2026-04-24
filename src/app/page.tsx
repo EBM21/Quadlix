@@ -7,11 +7,15 @@ import { Hero } from "@/components/Hero";
 import { StatsSection } from "@/sections/StatsSection";
 import { Services } from "@/sections/Services";
 import { ProductSuite } from "@/sections/ProductSuite";
-import { Pricing } from "@/sections/Pricing";
-import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 
-// Dynamic imports for heavy non-critical components
+// Dynamic imports for heavy content and non-critical components
+const Pricing = dynamic(() => import("@/sections/Pricing").then(mod => mod.Pricing), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />
+});
+const Contact = dynamic(() => import("@/sections/Contact").then(mod => mod.Contact), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />
+});
 const AIAssistant = dynamic(() => import("@/components/AIAssistant").then(mod => mod.AIAssistant), { 
   ssr: false 
 });
