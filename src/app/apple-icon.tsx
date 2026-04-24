@@ -26,7 +26,7 @@ export default function Icon() {
         }}
       >
         <img
-          src="https://quadlix.com/quadlix-logo.png"
+          src="https://quadlix.com/quadlix-logo.svg"
           width="140"
           height="140"
           style={{ objectFit: 'contain' }}

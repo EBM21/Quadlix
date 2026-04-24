@@ -33,9 +33,10 @@ export function Hero() {
             className="relative w-32 h-32 md:w-48 md:h-48 mb-6"
           >
             <Image 
-              src="/quadlix-logo.png" 
+              src="/quadlix-logo.svg" 
               alt="Quadlix Official Logo" 
-              fill
+              width={192}
+              height={192}
               className="object-contain"
               priority
             />

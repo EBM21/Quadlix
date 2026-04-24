@@ -18,9 +18,10 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10">
                 <Image 
-                  src="/quadlix-logo.png" 
+                  src="/quadlix-logo.svg" 
                   alt="Quadlix Logo" 
-                  fill 
+                  width={40}
+                  height={40}
                   className="object-contain"
                 />
               </div>
