@@ -14,174 +14,94 @@
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  
   --color-aura: var(--aura);
-  
   --color-neon-blue: #0ea5e9;
   --color-neon-purple: #8b5cf6;
   --color-neon-pink: #d946ef;
 }
 
 :root {
-  --background: #f8fafc; /* Soft Slate 50 */
-  --foreground: #0f172a; /* Deep Slate 900 */
-  --card: rgba(255, 255, 255, 0.7);
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #06b6d4; /* Neon Cyan */
-  --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
-  --muted: #f1f5f9;
-  --muted-foreground: #475569;
-  --accent: #f1f5f9;
-  --accent-foreground: #0f172a;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: rgba(15, 23, 42, 0.08);
-  --input: rgba(15, 23, 42, 0.08);
-  --ring: #06b6d4;
-  --radius: 1.56rem;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #06b6d4;
   --aura: #06b6d4;
+  --radius: 1.56rem;
 }
 
 .dark {
-  --background: #020205; /* Deep Midnight */
+  --background: #020205;
   --foreground: #f8fafc;
-  --card: rgba(13, 13, 18, 0.6);
-  --card-foreground: #f8fafc;
-  --popover: #0d0d12;
-  --popover-foreground: #f8fafc;
-  --primary: #06b6d4; /* Neon Cyan */
-  --primary-foreground: #000000;
-  --secondary: #1e1b4b; /* Deep Purple charcoal */
-  --secondary-foreground: #f8fafc;
-  --muted: #1e1b4b;
-  --muted-foreground: #94a3b8;
-  --accent: #312e81;
-  --accent-foreground: #f8fafc;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #f8fafc;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #06b6d4;
+  --primary: #06b6d4;
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* 1. ISAY REMOVE KIYA HAI: Smooth scroll native browser par lag karta hai heavy UI ke sath */
+    scroll-behavior: auto !important; 
   }
-  * {
-    @apply border-border;
-  }
+  
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    /* 2. Performance ke liye ye lines add ki hain */
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 }
 
 @layer utilities {
+  /* 3. Noise background ko thoda optimize kiya taake GPU load kam ho */
   .noise-bg {
     position: relative;
+    isolation: isolate;
   }
+  
   .noise-bg::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-    opacity: 0.03;
+    opacity: 0.02; /* Opacity mazeed kam ki */
     pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    transform: translateZ(0); /* Hardware acceleration */
   }
 
+  /* 4. Glass effects ko optimize kiya */
   .glass {
-    @apply backdrop-blur-2xl border border-slate-200/50 dark:border-white/10;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    @apply backdrop-blur-lg border border-slate-200/50 dark:border-white/10; /* Blur 2xl se kam karke lg kiya */
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateZ(0);
   }
   
   .glass-card {
-    @apply backdrop-blur-3xl border border-slate-200/50 dark:border-white/5 shadow-2xl;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05));
-  }
-
-  .border-glow {
-    position: relative;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-  }
-  
-  .border-glow::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(to bottom right, #e2e8f0, #cbd5e1);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    opacity: 0.5;
-    transition: opacity 0.3s ease, background 0.3s ease;
-  }
-
-  .dark .border-glow::after {
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  }
-
-  .border-glow:hover::after {
-    opacity: 1;
-    background: linear-gradient(to bottom right, #0ea5e9, #8b5cf6, #d946ef);
+    @apply backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-2xl;
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateZ(0);
   }
 
   .aura-glow {
-    box-shadow: 0 0 60px -15px var(--primary);
+    /* 5. Box shadow ko thoda optimize kiya */
+    box-shadow: 0 0 40px -10px var(--primary);
+    will-change: transform;
   }
 
   .grid-pattern {
     background-image: radial-gradient(circle at center, #06b6d4 0.5px, transparent 0.5px);
     background-size: 32px 32px;
     mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-  }
-
-  .text-aura {
-    background: linear-gradient(to right, #06b6d4, #a855f7, #ec4899);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .nebula-gradient {
-    background: radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15), transparent 50%),
-                radial-gradient(circle at 10% 80%, rgba(6, 182, 212, 0.1), transparent 50%);
+    pointer-events: none;
   }
 }
 
-/* Animations for floating elements */
+/* 6. Animations ko hardware accelerated banaya */
 @keyframes bubble-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-10px) translateZ(0); }
 }
 
 .animate-bubble-bounce {
-  animation: bubble-bounce 2s ease-in-out infinite;
+  animation: bubble-bounce 3s ease-in-out infinite; /* Speed thodi slow ki taake smoother lage */
+  will-change: transform;
 }

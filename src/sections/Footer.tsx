@@ -16,12 +16,12 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10">
+              <div className="relative w-20 h-20">
                 <Image 
                   src="/quadlix-logo.svg" 
                   alt="Quadlix Logo" 
-                  width={40}
-                  height={40}
+                  width={80}
+                  height={80}
                   className="object-contain"
                 />
               </div>

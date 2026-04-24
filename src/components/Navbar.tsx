@@ -25,7 +25,7 @@ export function Navbar() {
   const backdropBlur = useTransform(
     scrollY,
     [0, 80],
-    ["blur(0px)", "blur(32px)"]
+    ["blur(0px)", "blur(12px)"]
   );
 
   const headerBg = useTransform(
@@ -50,19 +50,21 @@ export function Navbar() {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-4 cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="relative w-10 h-10 group-hover:aura-glow transition-all">
+            {/* Logo Container: Size badha kar w-14 h-14 kiya gaya hai */}
+            <div className="relative w-25 h-25 group-hover:aura-glow transition-all flex items-center justify-center">
               <Image 
-                src="/quadlix-logo.svg" 
+                src="/navbar-logo.svg" 
                 alt="Logo" 
-                width={40}
-                height={40}
-                className="object-contain"
+                width={95} // Actual image size increase
+                height={95}
+                className="object-contain scale-110" // scale-110 se thoda aur impact aayega
                 priority
               />
             </div>
+            
             <span className="text-2xl font-bold font-heading tracking-tighter uppercase text-foreground group-hover:text-primary transition-colors">
               QUADLIX
             </span>
