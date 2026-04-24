@@ -3,17 +3,22 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
 import { StatsSection } from "@/sections/StatsSection";
 import { Services } from "@/sections/Services";
 import { ProductSuite } from "@/sections/ProductSuite";
 import { Footer } from "@/sections/Footer";
 
 // Dynamic imports for heavy content and non-critical components
+const Hero = dynamic(() => import("@/components/Hero").then(mod => mod.Hero), {
+  ssr: false,
+  loading: () => <div className="h-[100vh] bg-background" />
+});
 const Pricing = dynamic(() => import("@/sections/Pricing").then(mod => mod.Pricing), {
+  ssr: false,
   loading: () => <div className="h-96 animate-pulse bg-muted/20" />
 });
 const Contact = dynamic(() => import("@/sections/Contact").then(mod => mod.Contact), {
+  ssr: false,
   loading: () => <div className="h-96 animate-pulse bg-muted/20" />
 });
 const AIAssistant = dynamic(() => import("@/components/AIAssistant").then(mod => mod.AIAssistant), { 
@@ -27,6 +32,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const [showWidgets, setShowWidgets] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowWidgets(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
@@ -41,7 +54,7 @@ export default function Home() {
       onMouseMove={handleMouseMove}
       className="relative min-h-screen bg-background font-sans text-foreground noise-bg overflow-x-hidden"
     >
-      <WhatsAppWidget />
+      {showWidgets && <WhatsAppWidget />}
       
       {/* Background Elements */}
       <div className="fixed inset-0 grid-pattern opacity-10 -z-10 pointer-events-none" />
@@ -53,12 +66,7 @@ export default function Home() {
       <Navbar />
       
       <main className="relative z-10 w-full overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
+        <div>
             <Hero />
             <StatsSection />
             
@@ -103,12 +111,11 @@ export default function Home() {
 
             <Pricing />
             <Contact />
-          </motion.div>
-        </AnimatePresence>
+        </div>
       </main>
 
       <Footer />
-      <AIAssistant />
+      {showWidgets && <AIAssistant />}
     </div>
   );
 }

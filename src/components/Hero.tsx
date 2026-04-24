@@ -24,23 +24,16 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-12 flex flex-col items-center text-center mb-12"
         >
-          <motion.div
-            animate={{ 
-              filter: ["drop-shadow(0 0 0px rgba(139, 92, 246, 0))", "drop-shadow(0 0 20px rgba(139, 92, 246, 0.5))", "drop-shadow(0 0 0px rgba(139, 92, 246, 0))"],
-              scale: [1, 1.02, 1]
-            }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-32 h-32 md:w-48 md:h-48 mb-6"
-          >
+          <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6">
             <Image 
               src="/quadlix-logo.svg" 
-              alt="Quadlix Official Logo" 
+              alt="Quadlix Logo" 
               width={192}
               height={192}
               className="object-contain"
               priority
             />
-          </motion.div>
+          </div>
           <motion.h2 
             initial={{ opacity: 0, letterSpacing: "0.5em" }}
             animate={{ opacity: 1, letterSpacing: "1em" }}

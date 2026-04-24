@@ -9,7 +9,7 @@ const filteredArgs = args.filter(arg => arg !== '--host');
 
 console.log('Starting Next.js dev server with filtered arguments:', filteredArgs);
 
-const nextDev = spawn('npx', ['next', 'dev', '-p', '3000', ...filteredArgs], {
+const nextDev = spawn('npx', ['next', 'dev', '-p', '3000', '--turbo=false', ...filteredArgs], {
   stdio: 'inherit',
   shell: true
 });

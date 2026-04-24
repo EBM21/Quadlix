@@ -53,7 +53,7 @@ export function Pricing() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-6xl font-bold font-heading tracking-tight">
               TRANSPARENT <br />
@@ -86,7 +86,7 @@ export function Pricing() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true }}
               className="h-full"
             >
               <ShadCard 

@@ -15,7 +15,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true }}
             className="space-y-8"
           >
             <div className="space-y-4">
@@ -51,7 +51,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true }}
           >
             <Card className="glass-card border-border/50 p-8 sm:p-10 rounded-[40px] gradient-border">
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
