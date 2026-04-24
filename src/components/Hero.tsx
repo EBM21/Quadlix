@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
+import Image from "next/image";
 import { Magnetic } from "./Magnetic";
 import { cn } from "@/lib/utils";
 import * as React from "react";
@@ -15,12 +16,44 @@ export function Hero() {
   const y2 = useTransform(scrollY, [0, 500], [0, -80]);
 
   return (
-    <section id="home" className="relative min-h-[100vh] flex items-center justify-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-[100vh] flex flex-col items-center justify-center pt-32 md:pt-20 overflow-hidden">
       <div className="container mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-12 flex flex-col items-center text-center mb-12"
+        >
+          <motion.div
+            animate={{ 
+              filter: ["drop-shadow(0 0 0px rgba(139, 92, 246, 0))", "drop-shadow(0 0 20px rgba(139, 92, 246, 0.5))", "drop-shadow(0 0 0px rgba(139, 92, 246, 0))"],
+              scale: [1, 1.02, 1]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative w-32 h-32 md:w-48 md:h-48 mb-6"
+          >
+            <Image 
+              src="/quadlix-logo.png" 
+              alt="Quadlix Official Logo" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, letterSpacing: "0.5em" }}
+            animate={{ opacity: 1, letterSpacing: "1em" }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="text-2xl md:text-3xl font-black font-heading text-foreground tracking-[1em] uppercase ml-[1em]"
+          >
+            QUADLIX
+          </motion.h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           className="lg:col-span-5 space-y-10"
         >
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl border border-primary/30 bg-primary/5 mb-2 backdrop-blur-sm shadow-xl">

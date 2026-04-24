@@ -1,6 +1,7 @@
 'use client';
 import { Cpu, Github, Twitter, Linkedin, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -14,9 +15,14 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-white/20 rounded-sm rotate-45 border border-white/40"></div>
+            <div className="flex items-center gap-3">
+              <div className="relative w-10 h-10">
+                <Image 
+                  src="/quadlix-logo.png" 
+                  alt="Quadlix Logo" 
+                  fill 
+                  className="object-contain"
+                />
               </div>
               <span className="text-xl font-bold font-heading tracking-tight uppercase">
                 QUADLIX

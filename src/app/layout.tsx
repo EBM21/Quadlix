@@ -79,7 +79,7 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Quadlix",
     "url": "https://quadlix.com",
-    "logo": "https://quadlix.com/logo.png",
+    "logo": "https://quadlix.com/quadlix-logo.png",
     "sameAs": [
       "https://twitter.com/quadlix",
       "https://github.com/quadlix",

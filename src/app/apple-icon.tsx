@@ -1,11 +1,11 @@
 import { ImageResponse } from 'next/og'
  
 export const dynamic = 'force-static'
-
+ 
 // Image metadata
 export const size = {
-  width: 32,
-  height: 32,
+  width: 180,
+  height: 180,
 }
 export const contentType = 'image/png'
  
@@ -22,21 +22,18 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: '8px',
+          borderRadius: '40px',
         }}
       >
         <img
           src="https://quadlix.com/quadlix-logo.png"
-          width="24"
-          height="24"
+          width="140"
+          height="140"
           style={{ objectFit: 'contain' }}
         />
       </div>
     ),
-    // ImageResponse options
     {
-      // For convenience, we can re-use the exported icons size metadata
-      // config to also set the ImageResponse's width and height.
       ...size,
     }
   )
