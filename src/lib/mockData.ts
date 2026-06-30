@@ -7,10 +7,22 @@ import {
   Activity,
   Zap,
   Shield,
-  Layers
+  Layers,
+  ShoppingBag
 } from "lucide-react";
 
 export const products = [
+  {
+    id: "quadlify",
+    title: "Quadlify",
+    description: "Create, manage, and scale your online store with Quadlify. The smartest AI-driven alternative to Shopify for modern ecommerce businesses. Launch in minutes.",
+    icon: ShoppingBag,
+    color: "from-indigo-600 to-cyan-500",
+    feature: "AI E-commerce",
+    image: "/quadlify_dashboard.jpg",
+    link: "https://quadlify.quadlix.com",
+    isBento: true
+  },
   {
     id: "erp",
     title: "Quadlix ERP",
@@ -18,17 +30,7 @@ export const products = [
     icon: LayoutDashboard,
     color: "from-blue-600 to-indigo-500",
     feature: "Live Quadlix Sync",
-    image: "https://picsum.photos/seed/erp/1200/800",
-    isBento: true
-  },
-  {
-    id: "marketing",
-    title: "Digital Alpha",
-    description: "Predictive campaign synthesis using deep-learning sentiment analysis and automated cross-channel kinetic placement.",
-    icon: BarChart3,
-    color: "from-purple-600 to-pink-500",
-    feature: "Sentiment AI",
-    image: "https://picsum.photos/seed/marketing/1200/800"
+    image: "https://picsum.photos/seed/erp/1200/800"
   },
   {
     id: "builder",

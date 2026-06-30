@@ -99,9 +99,17 @@ export function ProductSuite() {
                     <h3 className="text-4xl md:text-6xl font-black font-heading tracking-tighter leading-none">{selectedProduct.title}</h3>
                     <p className="text-xl text-muted-foreground leading-relaxed">{selectedProduct.description}</p>
                   </div>
-                  <Button className="h-16 px-10 rounded-2xl bg-primary text-primary-foreground font-black text-lg shadow-2xl hover:scale-105 transition-all">
-                    Initialize System
-                  </Button>
+                  {selectedProduct.link ? (
+                    <a href={selectedProduct.link} target="_blank" rel="noopener noreferrer" className="inline-block">
+                      <Button className="h-16 px-10 rounded-2xl bg-primary text-primary-foreground font-black text-lg shadow-2xl hover:scale-105 transition-all">
+                        Initialize System
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button className="h-16 px-10 rounded-2xl bg-primary text-primary-foreground font-black text-lg shadow-2xl hover:scale-105 transition-all">
+                      Initialize System
+                    </Button>
+                  )}
                 </div>
                 <div className="relative rounded-[2rem] overflow-hidden aspect-square border border-white/5">
                   <img src={selectedProduct.image} alt={selectedProduct.title} className="w-full h-full object-cover opacity-80" referrerPolicy="no-referrer" />
