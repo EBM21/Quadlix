@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // Commented out for smoother local preview
+  output: 'export',
   assetPrefix: process.env.NODE_ENV === 'development' ? '' : '', // Placeholder for now, but I want to be careful
   images: {
     unoptimized: true, // Required for static export
@@ -27,9 +27,6 @@ const nextConfig = {
   // though we will try to fix as many as possible.
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 
