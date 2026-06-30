@@ -5,12 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-  experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
-  },
   async headers() {
     return [
       {
